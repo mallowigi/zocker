@@ -56,4 +56,5 @@ const generate_array: Generator<z.ZodArray<any>> = (array_schema, ctx) => {
 export const ArrayGenerator: InstanceofGeneratorDefinition<z.ZodArray<any>> = {
 	schema: z.ZodArray as any,
 	generator: generate_array,
+	match: "instanceof"
 };

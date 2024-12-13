@@ -10,7 +10,6 @@ export function pick<T>(array: readonly T[]): T {
 	const index = faker.number.int({
 		min: 0,
 		max: array.length - 1,
-		multipleOf: 1
 	});
 
 	if (array.hasOwnProperty(index)) return array[index]!;

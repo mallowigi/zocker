@@ -29,4 +29,5 @@ function get_date_check<Kind extends z.ZodDateCheck["kind"]>(
 export const DateGenerator: InstanceofGeneratorDefinition<z.ZodDate> = {
 	schema: z.ZodDate as any,
 	generator: generate_date,
+	match: "instanceof"
 };

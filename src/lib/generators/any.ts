@@ -62,9 +62,11 @@ const generate_unknown: Generator<z.ZodUnknown> = (schema, ctx) => {
 export const AnyGenerator: InstanceofGeneratorDefinition<z.ZodAny> = {
 	schema: z.ZodAny as any,
 	generator: generate_any,
+	match: "instanceof"
 };
 
 export const UnknownGenerator: InstanceofGeneratorDefinition<z.ZodUnknown> = {
 	schema: z.ZodUnknown as any,
 	generator: generate_unknown,
+	match: "instanceof"
 };
