@@ -83,7 +83,7 @@ const generate_value: Generator<z.ZodSchema> = (schema, generation_context) => {
 
 	//Check if an instanceof generator is available for this schema
 	const instanceof_generator = generation_context.instanceof_generators.find(
-		(g) => schema instanceof (g.schema as any)
+		(g) => schema.constructor.name === g.schema.name //schema instanceof (g.schema as any)
 	);
 	if (instanceof_generator)
 		return instanceof_generator.generator(schema, generation_context);
