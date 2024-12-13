@@ -1,7 +1,7 @@
 import { Generator, generate } from "../generate.js";
 import { z } from "zod";
 import { weighted_random_boolean } from "../utils/random.js";
-import { InstanceofGeneratorDefinition } from "lib/zocker.js";
+import { InstanceofGeneratorDefinition } from "../zocker.js";
 
 export type DefaultOptions = {
 	default_chance: number;

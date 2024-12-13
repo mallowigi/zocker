@@ -2,7 +2,7 @@ import { z } from "zod";
 import { Generator, generate } from "../generate.js";
 import { faker } from "@faker-js/faker";
 import { RecursionLimitReachedException } from "../exceptions.js";
-import { InstanceofGeneratorDefinition } from "lib/zocker.js";
+import { InstanceofGeneratorDefinition } from "../zocker.js";
 
 const generate_union: Generator<z.ZodUnion<any>> = (schema, ctx) => {
 	const schemas = schema._def.options as z.ZodTypeAny[];

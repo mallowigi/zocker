@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { faker } from "@faker-js/faker";
-import { InstanceofGeneratorDefinition } from "lib/zocker.js";
+import { InstanceofGeneratorDefinition } from "../zocker.js";
 import { Generator } from "../generate.js";
 import { weighted_random_boolean } from "../utils/random.js";
 import { InvalidSchemaException } from "../exceptions.js";

@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { Generator, generate } from "../generate.js";
 import { z } from "zod";
 import { RecursionLimitReachedException } from "../exceptions.js";
-import { InstanceofGeneratorDefinition } from "lib/zocker.js";
+import { InstanceofGeneratorDefinition } from "../zocker.js";
 
 export type RecordOptions = {
 	max: number;
