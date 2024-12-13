@@ -39,13 +39,11 @@ const generate_any: Generator<z.ZodAny> = (schema, ctx) => {
 	}
 
 	if (ctx.any_options.strategy === "json-compatible") {
-		const generated = generate(jsonSchema, ctx);
-		return generated;
+		return generate(jsonSchema, ctx);
 	}
 
 	const schema_to_use = pick(potential_schemas);
-	const generated = generate(schema_to_use, ctx);
-	return generated;
+	return generate(schema_to_use, ctx);
 };
 
 const generate_unknown: Generator<z.ZodUnknown> = (schema, ctx) => {
@@ -54,23 +52,19 @@ const generate_unknown: Generator<z.ZodUnknown> = (schema, ctx) => {
 	}
 
 	if (ctx.unknown_options.strategy === "json-compatible") {
-		const generated = generate(jsonSchema, ctx);
-		return generated;
+		return generate(jsonSchema, ctx);
 	}
 
 	const schema_to_use = pick(potential_schemas);
-	const generated = generate(schema_to_use, ctx);
-	return generated;
+	return generate(schema_to_use, ctx);
 };
 
 export const AnyGenerator: InstanceofGeneratorDefinition<z.ZodAny> = {
 	schema: z.ZodAny as any,
 	generator: generate_any,
-	match: "instanceof"
 };
 
 export const UnknownGenerator: InstanceofGeneratorDefinition<z.ZodUnknown> = {
 	schema: z.ZodUnknown as any,
 	generator: generate_unknown,
-	match: "instanceof"
 };

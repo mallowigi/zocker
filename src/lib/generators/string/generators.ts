@@ -19,7 +19,7 @@ export const uuid: StringKindGenerator = (ctx, lc, cc, td) => {
 	if (lc.max && lc.max < 36)
 		throw new InvalidSchemaException("uuid length must be 36");
 
-	return faker.datatype.uuid();
+	return faker.string.uuid();
 };
 
 export const cuid: StringKindGenerator = (ctx, lc, cc, td) => {
@@ -73,12 +73,12 @@ export const ip: StringKindGenerator = (ctx, lc, cc, td) => {
 
 export const datetime: StringKindGenerator = (ctx, lc, cc, td) => {
 	const format = cc.format as Extract<typeof cc.format, { kind: "datetime" }>;
-	const offset = format.offset === true;
+	const offset = format.offset;
 
 	let datetime = faker.date.recent().toISOString();
 	if (offset) {
-		const hours_number = faker.datatype.number({ min: 0, max: 23 });
-		const minutes_number = faker.datatype.number({ min: 0, max: 59 });
+		const hours_number = faker.number.int({ min: 0, max: 23 });
+		const minutes_number = faker.number.int({ min: 0, max: 59 });
 		const hours = hours_number.toString().padStart(2, "0");
 		const minutes = minutes_number.toString().padStart(2, "0");
 
@@ -100,7 +100,7 @@ export const url: StringKindGenerator = (ctx, lc, cc, td) => {
 export const emoji: StringKindGenerator = (ctx, lc, cc, td) => {
 	const length =
 		lc.exact ??
-		faker.datatype.number({
+		faker.number.int({
 			min: lc.min ?? 0,
 			max: lc.max ?? (lc.min !== null ? lc.min + 10_000 : 10_000)
 		});
@@ -122,25 +122,25 @@ export const any: StringKindGenerator = (ctx, lc, cc, td) => {
 		const semantic_generators: {
 			[flag in SemanticFlag]?: () => string;
 		} = {
-			fullname: faker.name.fullName,
-			firstname: faker.name.firstName,
-			lastname: faker.name.lastName,
-			street: faker.address.street,
-			city: faker.address.city,
-			country: faker.address.country,
-			zip: faker.address.zipCode,
+			fullname: faker.person.fullName,
+			firstname: faker.person.firstName,
+			lastname: faker.person.lastName,
+			street: faker.location.street,
+			city: faker.location.city,
+			country: faker.location.country,
+			zip: faker.location.zipCode,
 			phoneNumber: faker.phone.number,
 			paragraph: faker.lorem.paragraph,
 			sentence: faker.lorem.sentence,
 			word: faker.lorem.word,
-			jobtitle: faker.name.jobTitle,
+			jobtitle: faker.person.jobTitle,
 			color: color,
 			"color-hex": faker.internet.color,
 			weekday: faker.date.weekday,
-			"unique-id": () => faker.helpers.unique(faker.datatype.uuid),
-			key: () => faker.random.word(),
+			"unique-id": faker.string.uuid,
+			key: () => faker.word.sample(),
 			unspecified: () =>
-				faker.lorem.paragraphs(faker.datatype.number({ min: 1, max: 5 }))
+				faker.lorem.paragraphs(faker.number.int({ min: 1, max: 5 }))
 		};
 		const generator = semantic_generators[ctx.semantic_context];
 		if (!generator)
@@ -169,7 +169,7 @@ export const any: StringKindGenerator = (ctx, lc, cc, td) => {
 
 	let length =
 		lc.exact ??
-		faker.datatype.number({
+		faker.number.int({
 			min,
 			max
 		});
@@ -188,7 +188,7 @@ export const any: StringKindGenerator = (ctx, lc, cc, td) => {
 
 	return (
 		(cc.starts_with ?? "") +
-		faker.datatype.string(generated_length) +
+		faker.string.sample(generated_length) +
 		cc.includes.join() +
 		(cc.ends_with ?? "")
 	);
@@ -211,15 +211,12 @@ function matches_constraints(
 
 	if (cc.starts_with && !str.startsWith(cc.starts_with)) return false;
 	if (cc.ends_with && !str.endsWith(cc.ends_with)) return false;
-	if (cc.includes.length > 0 && !cc.includes.every((i) => str.includes(i)))
-		return false;
-
-	return true;
+	return !(cc.includes.length > 0 && !cc.includes.every((i) => str.includes(i)));
 }
 
 function generate_regex(regex: RegExp): string {
 	const randexp = new Randexp(regex);
-	randexp.randInt = (min, max) =>
-		faker.datatype.number({ min, max, precision: 1 });
+	randexp.randInt = (min: number, max: number) =>
+		faker.number.int({ min, max });
 	return randexp.gen();
 }

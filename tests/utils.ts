@@ -17,7 +17,7 @@ export function test_schema_generation(
 	) as any as readonly (keyof typeof schemas)[];
 
 	test.concurrent.each(schema_keys)("generates valid data for %s", (key) => {
-		const schema = schemas[key];
+		const schema = schemas[key]!!;
 		for (let i = 0; i < repeats; i++) {
 			const data = zocker(schema).generate();
 			expect(() => {

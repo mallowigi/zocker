@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { Generator } from "../generate.js";
 import { z } from "zod";
-import { InstanceofGeneratorDefinition } from "lib/zocker.js";
 import { InvalidSchemaException } from "../exceptions.js";
+import { InstanceofGeneratorDefinition } from "../zocker";
 
 const generate_bigint: Generator<z.ZodBigInt> = (bigint_schema, ctx) => {
 	const multiple_of_checks = get_bigint_checks(bigint_schema, "multipleOf");
@@ -28,7 +28,7 @@ const generate_bigint: Generator<z.ZodBigInt> = (bigint_schema, ctx) => {
 		return lcm(acc, check.value);
 	}, 1n);
 
-	let value = faker.datatype.bigInt({ min, max });
+	let value = faker.number.bigInt({ min, max });
 	const next_larger_multiple = value + (multipleof - (value % multipleof));
 	const next_smaller_multiple = value - (value % multipleof);
 
