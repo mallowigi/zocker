@@ -1,7 +1,7 @@
 {
   "name": "@mallowigi/zocker",
   "description": "Generate realistic test-data from your Zod-Schemas",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "author": "Loris Sigrist && Elior Boukhobza",
   "license": "MIT",
   "private": false,
