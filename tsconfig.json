@@ -18,5 +18,5 @@
 		"lib": ["ESNext", "es2020"] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
 	},
 	"exclude": ["**/*.test.ts", "**/*.bench.ts", "**/*.spec.ts"],
-	"include": ["src/**/*"]
+	"include": ["src/**/*", 'index.ts']
 }
