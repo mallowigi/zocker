@@ -1,6 +1,6 @@
 //import { z } from "zod";
 import { z } from "zod/v4";
-import { zocker } from "zocker";
+import { zocker } from "@mallowigi/zocker";
 
 const schema = z.object({
 	name: z.string(),

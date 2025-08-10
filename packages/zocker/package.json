@@ -1,8 +1,8 @@
 {
-	"name": "zocker",
+	"name": "@mallowigi/zocker",
 	"description": "Generate realistic test-data from your Zod-Schemas",
-	"version": "2.2.0",
-	"author": "Loris Sigrist",
+	"version": "2.2.1",
+	"author": "Loris Sigrist & Elior Boukhobza",
 	"license": "MIT",
 	"keywords": [
 		"mock-data",
@@ -24,7 +24,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"tsdown": "^0.12.9",
+		"tsdown": "^0.14.0",
 		"typescript": "catalog:",
 		"vitest": "catalog:"
 	},
@@ -35,7 +35,7 @@
 		"zod": "catalog:"
 	},
 	"dependencies": {
-		"@faker-js/faker": "^9.8.0",
+		"@faker-js/faker": "^9.9.0",
 		"randexp": "^0.5.3"
 	}
 }

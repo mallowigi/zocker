@@ -1,5 +1,11 @@
 # zocker
 
+## 2.2.1
+
+### Patch Changes
+
+- Trying to publish
+
 ## 2.2.0
 
 ### Minor Changes
