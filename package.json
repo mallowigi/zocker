@@ -1,44 +1,14 @@
 {
-  "name": "@mallowigi/zocker",
-  "description": "Generate realistic test-data from your Zod-Schemas",
-  "version": "2.1.1",
-  "author": "Loris Sigrist && Elior Boukhobza",
-  "license": "MIT",
-  "private": false,
-  "keywords": [
-    "mock-data",
-    "zod"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mallowigi/zocker.git"
-  },
-  "homepage": "https://zocker.sigrist.dev",
+	"name": "zocker-monorepo",
+	"private": true,
   "scripts": {
-    "build": "tsc",
-    "test": "vitest --run --passWithNoTests",
-    "bench": "vitest bench --run --passWithNoTests",
-    "format": "prettier --write .",
     "changeset": "changeset",
-    "release": "npm run build && changeset publish"
+		"format": "prettier --write .",
+		"test": "pnpm -r run test",
+		"build": "pnpm -r run build"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.11",
-    "prettier": "^3.4.2",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
-  },
-  "files": [
-    "dist"
-  ],
-  "peerDependencies": {
-    "zod": "^3.24.1"
-  },
-  "dependencies": {
-    "@faker-js/faker": "^9.3.0",
-    "randexp": "^0.5.3"
+		"@changesets/cli": "^2.29.4",
+		"prettier": "^2.8.8"
   }
 }
