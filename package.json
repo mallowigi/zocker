@@ -1,14 +1,14 @@
 {
-	"name": "zocker-monorepo",
-	"private": true,
+  "name": "zocker-monorepo",
+  "private": true,
   "scripts": {
     "changeset": "changeset",
-		"format": "prettier --write .",
-		"test": "pnpm -r run test",
-		"build": "pnpm -r run build"
+    "format": "prettier --write .",
+    "test": "pnpm -r run test",
+    "build": "pnpm -r run build"
   },
   "devDependencies": {
-		"@changesets/cli": "^2.29.4",
-		"prettier": "^2.8.8"
+    "@changesets/cli": "^2.29.5",
+    "prettier": "^3.6.2"
   }
 }
